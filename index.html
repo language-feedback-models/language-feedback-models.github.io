@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LFM: Policy Improvement using Language Feedback Models</title>
 
+  <script src="./assets/data.js"></script>
   <script>
     function updateVideo() {
       var taskId = document.getElementById("video-menu").value;
@@ -17,16 +18,19 @@
       console.log(video)
       video.playbackRate = 0.5;
       video.play();
+
+      var instruction = document.getElementById("instruction");
+      instruction.innerHTML = taskId2instruction[taskId];
     }
 
     function initVideos() {
       updateVideo();
 
-      // Loop to play the trajectories
-      for (var i = 1; i <= 3; i++) {
-        var video = document.getElementById("traj" + i);
-        // video.playbackRate = 0.5;
-      }
+      // // Loop to play the trajectories
+      // for (var i = 1; i <= 3; i++) {
+      //   var video = document.getElementById("traj" + i);
+      //   // video.playbackRate = 0.5;
+      // }
 
     }
   </script>
@@ -101,15 +105,15 @@
       <div class="container">
         <div class="columns">
             <div class="column has-text-centered">
-              <h3 class="title is-5">TODO: Find task description</h3>
+              <h3 class="title is-5">Hold the clock and turn on the lamp.</h3>
 
                 <video poster="" id="traj1" autoplay controls muted loop height="30%">
-                    <source src="./assets/videos/tmp.mp4"
+                    <source src="./assets/videos/pov/valid_unseen__look_at_obj_in_light-AlarmClock-None-DeskLamp-308__trial_T20190908_222917_366542.mp4"
                             type="video/mp4">
                 </video>
             </div>
             <div class="column has-text-centered">
-              <h3 class="title is-5">TODO: Find task description</h3>
+              <h3 class="title is-5">Wash a plate and place on counter.</h3>
 
                 <video poster="" id="traj2" autoplay controls muted loop height="30%">
                 <source src="./assets/videos/pov/valid_unseen__pick_clean_then_place_in_recep-Plate-None-CounterTop-10__trial_T20190908_213533_897289.mp4"
@@ -118,9 +122,9 @@
           </div>
 
           <div class="column has-text-centered">
-            <h3 class="title is-5">TODO: Find task description</h3>
+            <h3 class="title is-5">Put two pillows on a couch.</h3>
             <video poster="" id="traj3" autoplay controls muted loop height="30%">
-              <source src="./assets/videos/pov/valid_unseen__pick_two_obj_and_place-Pillow-None-Sofa-219__trial_T20190907_163327_486300.mp4"
+              <source src="./assets/videos/pov/valid_unseen__pick_two_obj_and_place-Pillow-None-Sofa-219__trial_T20190907_163240_345855.mp4"
                       type="video/mp4">
             </video>
           </div>
@@ -141,7 +145,6 @@
           <h3 class="title is-4">Visualize more feedbacks</h3>
           <div class="columns">
             <div class="column has-text-centered">
-
               <div class="select is-medium">
                 <select id="video-menu" onchange="updateVideo()">
                   <option value="valid_unseen__look_at_obj_in_light-AlarmClock-None-DeskLamp-308__trial_T20190908_222917_366542">look_at_obj_in_light-AlarmClock-None-DeskLamp-308/trial_T20190908_222917_366542</option>
@@ -282,6 +285,8 @@
               </div>
               <br/>
               <br/>
+
+              <h4 class="title is-5" id="instruction"></h4>
 
               <video id="lfm-video"
                      controls
